@@ -1,0 +1,9 @@
+RewriteEngine On    # Turn on the rewriting engine
+
+RewriteRule ^create-receipt create-receipt.php [NC,L]
+RewriteRule ^edit-receipt edit-receipt.php [NC,L]
+RewriteRule ^delete-receipt delete-receipt.php [NC,L]
+RewriteRule ^get-receipts get-receipts.php [NC,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]

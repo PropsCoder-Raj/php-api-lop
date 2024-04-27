@@ -1,0 +1,9 @@
+RewriteEngine On    # Turn on the rewriting engine
+
+RewriteRule ^create-user create-user.php [NC,L]
+RewriteRule ^edit-user edit-user.php [NC,L]
+RewriteRule ^delete-user delete-user.php [NC,L]
+RewriteRule ^get-users get-users.php [NC,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]

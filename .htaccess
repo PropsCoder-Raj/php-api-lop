@@ -1,0 +1,46 @@
+# RewriteEngine On    # Turn on the rewriting engine
+
+# # Set headers to access CORS Requests / allowing localhost only
+# Header always add Access-Control-Allow-Origin "http://localhost:4200"
+# Header always add Access-Control-Allow-Headers "Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization"
+# Header always add Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
+# Header always add Access-Control-Allow-Credentials "true"
+# Header always add Content-Type "application/json"
+
+# # <FilesMatch ".(ttf|ttc|otf|eot|woff|woff2|svg|svgz|jpg|png|ico|font.css|css|js)">
+# #             Header always add Access-Control-Allow-Origin: "*"
+# #             Header always add Access-Control-Allow-Methods: "GET,POST,OPTIONS,DELETE,PUT"
+# #             Header always add Access-Control-Allow-Credentials: true
+# #             Header always add Access-Control-Allow-Headers: "Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization"
+# #         </FilesMatch>
+
+# # # <FilesMatch ".(eot|ttf|otf|woff)">
+# # #     Header set Access-Control-Allow-Origin "*"
+# # #     Header always set Access-Control-Allow-Methods "POST, GET, DELETE, PUT, OPTIONS"
+# # #     Header always set Access-Control-Allow-Headers "*"
+# # # </FilesMatch>
+
+# # <FilesMatch ".php$">
+#     # Header always set Access-Control-Allow-Origin "*"
+#     # Header always set Access-Control-Allow-Headers "origin, x-requested-with, content-type, Accept"
+#     # Header always set Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
+
+#     # Additional headers for OPTIONS requests
+#     # RewriteCond %{REQUEST_METHOD} OPTIONS
+#     # Header always set Access-Control-Allow-Origin "*"
+#     # Header always set Access-Control-Allow-Headers "origin, x-requested-with, content-type, Accept"
+#     # Header always set Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
+#     # Header always set Access-Control-Max-Age "86400" # 1 day
+# # </FilesMatch>
+
+RewriteCond %{REQUEST_METHOD} OPTIONS
+RewriteRule ^(.*)$ $1 [R=200,L]
+#Set headers to access CORS Requests / allowing localhost only
+Header always add Access-Control-Allow-Origin "*"
+Header always add Access-Control-Allow-Headers "origin, x-requested-with, content-type"
+Header always add Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
+RewriteEngine on
+RewriteCond $1 !^(index\.php|public|\.txt)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?$1

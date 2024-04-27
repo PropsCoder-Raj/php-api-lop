@@ -1,0 +1,11 @@
+RewriteEngine On    # Turn on the rewriting engine
+
+RewriteRule ^create-lossofpointer create-lossofpointer.php [NC,L]
+RewriteRule ^edit-lossofpointer edit-lossofpointer.php [NC,L]
+RewriteRule ^delete-lossofpointer delete-lossofpointer.php [NC,L]
+RewriteRule ^get-lossofpointers get-lossofpointers.php [NC,L]
+RewriteRule ^get-pending-lossofpointers get-pending-lossofpointers.php [NC,L]
+RewriteRule ^get-completed-lossofpointers get-completed-lossofpointers.php [NC,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]

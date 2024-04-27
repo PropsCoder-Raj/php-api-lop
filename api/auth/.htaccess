@@ -1,0 +1,17 @@
+RewriteEngine On    # Turn on the rewriting engine
+
+#Set headers to access CORS Requests / allowing localhost only
+Header always add Access-Control-Allow-Origin "http://localhost:4200/"
+Header always add Access-Control-Allow-Headers "origin, x-requested-with, content-type"
+Header always add Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
+
+RewriteRule ^post post.php [NC,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+<FilesMatch ".(eot|ttf|otf|woff)">
+    Header set Access-Control-Allow-Origin "http://localhost:4200/"
+    Header always set Access-Control-Allow-Methods "POST, GET, DELETE, PUT"
+    Header always set Access-Control-Allow-Headers "*"
+</FilesMatch>

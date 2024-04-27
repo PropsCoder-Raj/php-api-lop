@@ -1,0 +1,9 @@
+RewriteEngine On    # Turn on the rewriting engine
+
+RewriteRule ^create-section create-section.php [NC,L]
+RewriteRule ^edit-section edit-section.php [NC,L]
+RewriteRule ^delete-section delete-section.php [NC,L]
+RewriteRule ^get-sections get-sections.php [NC,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]

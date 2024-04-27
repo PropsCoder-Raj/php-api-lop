@@ -1,0 +1,9 @@
+RewriteEngine On    # Turn on the rewriting engine
+
+RewriteRule ^create-ledger create-ledger.php [NC,L]
+RewriteRule ^edit-ledger edit-ledger.php [NC,L]
+RewriteRule ^delete-ledger delete-ledger.php [NC,L]
+RewriteRule ^get-ledgers get-ledgers.php [NC,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
